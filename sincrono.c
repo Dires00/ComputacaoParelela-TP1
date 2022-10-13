@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-#define LEN 12
+#define LEN 1440
 
 int numberOfDividers(long int number){
     int dividers = 2;
@@ -26,7 +26,7 @@ int main(void){
         numbers[i] = atoi(input);
         i++;
     }
-
+    
     
     long int dividers[LEN];
     time_t time1, time2;
@@ -34,6 +34,9 @@ int main(void){
     time1 = time(0);
     clock1 = (double) clock () / CLOCKS_PER_SEC;
     for(int i = 0; i < LEN; i++){
+        if(i % (1440/20) == 0){
+            printf("calculou %f%%\n", 100.0*(float)i/(1440));
+        }
         dividers[i] = numberOfDividers(numbers[i]);
     }
     time2 = time(0);
